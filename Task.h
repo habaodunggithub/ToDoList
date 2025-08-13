@@ -25,5 +25,5 @@ private:
     int status;
 };
 
-void enterTastInfo(const Task&);
+void enterTaskInfo(Task&);
 void printTaskInfo(const Task&);
