@@ -84,3 +84,9 @@ bool enterDate(Date& d, const std::string& dateString) {
 
     return true;
 }
+
+std::string getDateString(const Date& date) {
+    return std::to_string(date.getDay()) 
+        + "/" + std::to_string(date.getMonth())
+        + "/" + std::to_string(date.getYear());
+}

@@ -22,3 +22,4 @@ private:
 
 int compare(const Date&, const Date&);
 bool enterDate(Date& d, const std::string&);
+std::string getDateString(const Date&);

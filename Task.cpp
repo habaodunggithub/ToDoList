@@ -39,11 +39,11 @@ void Task::setDueDate(const Date& date) {
     this->dueDate = date;
 }
 
-int Task::getStatus() const {
+const std::string& Task::getStatus() const {
     return status;
 }
 
-void Task::setStatus(int status) {
+void Task::setStatus(const std::string& status) {
     this->status = status;
 }
 
@@ -78,14 +78,13 @@ void deleteRangeFromBottom(int i, int j) {
 void enterTaskInfo(Task& task) {
     std::string temp;
 
-    std::cout << "Task's ID: ";
-    std::getline(std::cin, temp);
-    task.setID(temp);
-
-    
     std::cout << "Task's title: ";
     std::getline(std::cin, temp);
     task.setTitle(temp);
+
+    std::cout << "Task's ID: ";
+    std::getline(std::cin, temp);
+    task.setID(temp);
     
     std::cout << "Task's description: ";
     std::getline(std::cin, temp);
@@ -94,13 +93,18 @@ void enterTaskInfo(Task& task) {
     Date d;
     std::cout << "Task's due date (dd/mm/yyyy): ";
     std::getline(std::cin, temp);
+    deleteRangeFromBottom(0, 1);  
+    
     while (enterDate(d, temp) == false) {
         deleteRangeFromBottom(0, 0);
         std::cout << "Invalid date!\n";
         std::cout << "Task's due date (dd/mm/yyyy): ";
         std::getline(std::cin, temp); 
-        deleteRangeFromBottom(2, 2);  
+        deleteRangeFromBottom(0, 2);  
     }
+
+    task.setDueDate(d);
+    std::cout << "Task's due date (dd/mm/yyyy): " << d.getDay() << "/" << d.getMonth() << "/" << d.getYear() << "\n";
 
     int choice = 1;
     std::cout << "Task's status:\n";
@@ -122,10 +126,27 @@ void enterTaskInfo(Task& task) {
         deleteRangeFromBottom(0, 7);
     }
     std::cout << "Task's status: ";
-    if (choice == 1) std::cout << "Not started.\n";
-    else if (choice == 2) std::cout << "In progress.\n";
-    else std::cout << "Complete.\n";
+    if (choice == 1) {
+        std::cout << "Not started.\n";
+        task.setStatus("Not started");
+    }
+    else if (choice == 2) {
+        std::cout << "In progress.\n";
+        task.setStatus("In progress");
+    }
+    else {
+        std::cout << "Complete.\n";
+        task.setStatus("Complete");
+    }
 
     std::this_thread::sleep_for(std::chrono::seconds(2));
     system("cls");
+}
+
+void printTaskInfo(const Task& task) {
+    std::cout << "Task's title: " << task.getTitle() << "\n";
+    std::cout << "ID: " << task.getID() << "\n";
+    std::cout << "Description: " << task.getDescription() << "\n";
+    std::cout << "Due date: " << getDateString(task.getDueDate()) << "\n";
+    std::cout << "Status: " << task.getStatus() << "\n";
 }

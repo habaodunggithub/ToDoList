@@ -14,15 +14,15 @@ public:
     void setDescription(const std::string&);
     const Date& getDueDate() const;
     void setDueDate(const Date&);
-    int getStatus() const;
-    void setStatus(int);
+    const std::string& getStatus() const;
+    void setStatus(const std::string&);
 
 private:
     std::string id;
     std::string title;
     std::string description;
     Date dueDate;
-    int status;
+    std::string status;
 };
 
 void enterTaskInfo(Task&);
