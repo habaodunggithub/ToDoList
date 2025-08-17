@@ -1,6 +1,7 @@
 #include "TaskManager.h"
+#include <iostream>
 
-TaskManager::TaskManager() : tasksList({}), totalTasks(0) {}
+TaskManager::TaskManager() : totalTasks(0) {}
 TaskManager::~TaskManager() {}
 
 int TaskManager::getTotalTasks() const {
@@ -24,7 +25,7 @@ bool TaskManager::printTasksList() const {
             << " - " << tasksList[i].getID()
             << "\n";
     }
-    return false;
+    return true;
 }
 
 void TaskManager::addTask() {
@@ -37,8 +38,6 @@ void TaskManager::addTask() {
 void TaskManager::removeTask(int index) {
     if (index >= getTotalTasks() || index < 0) return;
 
-    for (int i = index; i < getTotalTasks() - 1; i++) {
-        tasksList[i] = tasksList[i + 1];
-    }
+    tasksList.erase(tasksList.begin() + index);
     setTotalTasks(getTotalTasks() - 1);
 }
