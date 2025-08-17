@@ -41,3 +41,13 @@ void TaskManager::removeTask(int index) {
     tasksList.erase(tasksList.begin() + index);
     setTotalTasks(getTotalTasks() - 1);
 }
+
+int TaskManager::findTask(const std::string& titleOrID) const {
+    for (int i = 0; i < getTotalTasks(); i++) {
+        if (titleOrID == tasksList[i].getTitle() 
+        || titleOrID == tasksList[i].getID())
+            return i;
+    }
+
+    return -1;
+}
