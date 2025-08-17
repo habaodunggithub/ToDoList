@@ -11,8 +11,10 @@ public:
     int getTotalTasks() const;
     void setTotalTasks(int);
     bool printTasksList() const;
+    void addTask();
     void removeTask(int);
 private:
     std::vector<Task> tasksList;
     int totalTasks;
 };
+
