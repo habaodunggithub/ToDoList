@@ -9,6 +9,8 @@ public:
     TaskManager();
     ~TaskManager();
 
+    bool loadData(const char*);
+    bool saveData(const char*);
     int getTotalTasks() const;
     void setTotalTasks(int);
     bool printTasksList() const;

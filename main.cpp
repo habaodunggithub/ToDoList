@@ -1,8 +1,7 @@
-#include "Task.h"
+#include "TaskManager.h"
 
 int main() {
-    Task t;
-    enterTaskInfo(t);
-    printTaskInfo(t);
+    TaskManager tm;
+    tm.printTasksList();
     return 0;
 }

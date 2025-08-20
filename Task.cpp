@@ -141,6 +141,7 @@ void enterTaskInfo(Task& task) {
 
     std::this_thread::sleep_for(std::chrono::seconds(2));
     system("cls");
+    std::cin.ignore();
 }
 
 void printTaskInfo(const Task& task) {
