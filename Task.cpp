@@ -139,7 +139,6 @@ void enterTaskInfo(Task& task) {
         task.setStatus("Complete");
     }
 
-    std::this_thread::sleep_for(std::chrono::seconds(2));
     system("cls");
     std::cin.ignore();
 }

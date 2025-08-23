@@ -1,7 +1,7 @@
-#include "TaskManager.h"
+#include "FrontendManager.h"
 
 int main() {
-    TaskManager tm;
-    tm.printTasksList();
+    FrontendManager fm;
+    fm.run();
     return 0;
 }

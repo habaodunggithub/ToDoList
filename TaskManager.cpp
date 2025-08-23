@@ -11,6 +11,10 @@ TaskManager::~TaskManager() {
     saveData("data.txt");
 }
 
+Task& TaskManager::getTask(int idx) {
+    return tasksList[idx];
+}
+
 bool TaskManager::loadData(const char* fileName) {
     std::ifstream fileIn;
     fileIn.open(fileName, std::ios::in);
