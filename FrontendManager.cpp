@@ -7,6 +7,7 @@ FrontendManager::~FrontendManager() {}
 
 void FrontendManager::run() {
     while (true) {
+        system("cls");
         int choice = printMenu();
         if (choice == 1) {
             int taskIdx;
